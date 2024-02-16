@@ -77,22 +77,35 @@ def question1():
 
 def question2():
     answer = {}
-
+    #question_a
     # Answers are floats
-    answer["(a) entropy_entire_data"] = 0.
+    answer["(a) entropy_entire_data"] = 1.425364
     # Infogain
-    answer["(b) x <= 0.2"] = 0.
-    answer["(b) x <= 0.7"] = 0.
-    answer["(b) y <= 0.6"] = 0.
+    answer["(b) x < 0.2"] = 0.177392
+    answer["(b) x < 0.7"] = 0.355702
+    answer["(b) y < 0.6"] = 0.347818
 
     # choose one of 'x=0.2', 'x=0.7', or 'x=0.6'
-    answer["(c) attribute"] = ""  
+    answer["(c) attribute"] =  'x<=0.7'
 
     # Use the Binary Tree structure to construct the tree
     # Answer is an instance of BinaryTree
-    tree = u.BinaryTree("Root")
+    tree = u.BinaryTree("x<=0.7")
+    
+    A=tree.insert_left("y<=0.6")
+    A.insert_left("B")
+    C=A.insert_right("x<=0.2")
+    D=C.insert_left("y<=0.8")
+    C.insert_right("A")
+    D.insert_left("C")
+    D.insert_right("B")
+    
+    B=tree.insert_right("y<=0.6")
+    E=B.insert_left("y<=0.3")
+    B.insert_right("A")
+    E.insert_left("A")
+    E.insert_right("C")
     answer["(d) full decision tree"] = tree
-
     return answer
 
 
